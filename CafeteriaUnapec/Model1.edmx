@@ -1,0 +1,592 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CAFETERIAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ARTICULOS">
+          <Key>
+            <PropertyRef Name="Id_Articulo" />
+          </Key>
+          <Property Name="Id_Articulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id_Marca" Type="int" Nullable="false" />
+          <Property Name="Costo" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Id_Proveedor" Type="int" Nullable="false" />
+          <Property Name="Existencia" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CAFETERIAS">
+          <Key>
+            <PropertyRef Name="Id_Cafeteria" />
+          </Key>
+          <Property Name="Id_Cafeteria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripción" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id_Campus" Type="int" Nullable="false" />
+          <Property Name="Encargado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CAMPUS">
+          <Key>
+            <PropertyRef Name="Id_Campus" />
+          </Key>
+          <Property Name="Id_Campus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMPLEADOS">
+          <Key>
+            <PropertyRef Name="Id_Empleado" />
+          </Key>
+          <Property Name="Id_Empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cedula" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tanda_Labor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Porciento_Comision" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Fecha_Ingreso" Type="date" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facturacion_Articulos">
+          <Key>
+            <PropertyRef Name="No_Factura" />
+          </Key>
+          <Property Name="No_Factura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Empleado" Type="int" Nullable="false" />
+          <Property Name="Id_Articulo" Type="int" Nullable="false" />
+          <Property Name="Fecha_Venta" Type="date" Nullable="false" />
+          <Property Name="Monto_Articulo" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Unidades_Vendidas" Type="int" Nullable="false" />
+          <Property Name="Comentario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Id_User" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MARCAS">
+          <Key>
+            <PropertyRef Name="Id_Marca" />
+          </Key>
+          <Property Name="Id_Marca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion_Marca" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROVEEDORES">
+          <Key>
+            <PropertyRef Name="Id_Proveedor" />
+          </Key>
+          <Property Name="Id_Proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Comercial" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RNC" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="Fecha_Registro" Type="date" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo_usuarios">
+          <Key>
+            <PropertyRef Name="Id_TipoUser" />
+          </Key>
+          <Property Name="Id_TipoUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="Id_User" />
+          </Key>
+          <Property Name="Id_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cedula" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id_TipoUser" Type="int" Nullable="false" />
+          <Property Name="Limite_credito" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Fecha_Registro" Type="date" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ARTICULOS_MARCAS">
+          <End Role="MARCAS" Type="Self.MARCAS" Multiplicity="1" />
+          <End Role="ARTICULOS" Type="Self.ARTICULOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARCAS">
+              <PropertyRef Name="Id_Marca" />
+            </Principal>
+            <Dependent Role="ARTICULOS">
+              <PropertyRef Name="Id_Marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTICULOS_PROVEEDORES">
+          <End Role="PROVEEDORES" Type="Self.PROVEEDORES" Multiplicity="1" />
+          <End Role="ARTICULOS" Type="Self.ARTICULOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDORES">
+              <PropertyRef Name="Id_Proveedor" />
+            </Principal>
+            <Dependent Role="ARTICULOS">
+              <PropertyRef Name="Id_Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAFETERIAS_CAMPUS">
+          <End Role="CAMPUS" Type="Self.CAMPUS" Multiplicity="1" />
+          <End Role="CAFETERIAS" Type="Self.CAFETERIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMPUS">
+              <PropertyRef Name="Id_Campus" />
+            </Principal>
+            <Dependent Role="CAFETERIAS">
+              <PropertyRef Name="Id_Campus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturacion_Articulos_ARTICULOS">
+          <End Role="ARTICULOS" Type="Self.ARTICULOS" Multiplicity="1" />
+          <End Role="Facturacion_Articulos" Type="Self.Facturacion_Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTICULOS">
+              <PropertyRef Name="Id_Articulo" />
+            </Principal>
+            <Dependent Role="Facturacion_Articulos">
+              <PropertyRef Name="Id_Articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturacion_Articulos_EMPLEADOS">
+          <End Role="EMPLEADOS" Type="Self.EMPLEADOS" Multiplicity="1" />
+          <End Role="Facturacion_Articulos" Type="Self.Facturacion_Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADOS">
+              <PropertyRef Name="Id_Empleado" />
+            </Principal>
+            <Dependent Role="Facturacion_Articulos">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturacion_Articulos_USUARIOS">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="Facturacion_Articulos" Type="Self.Facturacion_Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="Id_User" />
+            </Principal>
+            <Dependent Role="Facturacion_Articulos">
+              <PropertyRef Name="Id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOS_Tipo_usuarios">
+          <End Role="Tipo_usuarios" Type="Self.Tipo_usuarios" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_usuarios">
+              <PropertyRef Name="Id_TipoUser" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="Id_TipoUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CAFETERIAModelStoreContainer">
+          <EntitySet Name="ARTICULOS" EntityType="Self.ARTICULOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAFETERIAS" EntityType="Self.CAFETERIAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAMPUS" EntityType="Self.CAMPUS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMPLEADOS" EntityType="Self.EMPLEADOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturacion_Articulos" EntityType="Self.Facturacion_Articulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MARCAS" EntityType="Self.MARCAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROVEEDORES" EntityType="Self.PROVEEDORES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_usuarios" EntityType="Self.Tipo_usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ARTICULOS_MARCAS" Association="Self.FK_ARTICULOS_MARCAS">
+            <End Role="MARCAS" EntitySet="MARCAS" />
+            <End Role="ARTICULOS" EntitySet="ARTICULOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTICULOS_PROVEEDORES" Association="Self.FK_ARTICULOS_PROVEEDORES">
+            <End Role="PROVEEDORES" EntitySet="PROVEEDORES" />
+            <End Role="ARTICULOS" EntitySet="ARTICULOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAFETERIAS_CAMPUS" Association="Self.FK_CAFETERIAS_CAMPUS">
+            <End Role="CAMPUS" EntitySet="CAMPUS" />
+            <End Role="CAFETERIAS" EntitySet="CAFETERIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturacion_Articulos_ARTICULOS" Association="Self.FK_Facturacion_Articulos_ARTICULOS">
+            <End Role="ARTICULOS" EntitySet="ARTICULOS" />
+            <End Role="Facturacion_Articulos" EntitySet="Facturacion_Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturacion_Articulos_EMPLEADOS" Association="Self.FK_Facturacion_Articulos_EMPLEADOS">
+            <End Role="EMPLEADOS" EntitySet="EMPLEADOS" />
+            <End Role="Facturacion_Articulos" EntitySet="Facturacion_Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturacion_Articulos_USUARIOS" Association="Self.FK_Facturacion_Articulos_USUARIOS">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="Facturacion_Articulos" EntitySet="Facturacion_Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOS_Tipo_usuarios" Association="Self.FK_USUARIOS_Tipo_usuarios">
+            <End Role="Tipo_usuarios" EntitySet="Tipo_usuarios" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CAFETERIAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ARTICULOS">
+          <Key>
+            <PropertyRef Name="Id_Articulo" />
+          </Key>
+          <Property Name="Id_Articulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Marca" Type="Int32" Nullable="false" />
+          <Property Name="Costo" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Id_Proveedor" Type="Int32" Nullable="false" />
+          <Property Name="Existencia" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MARCAS" Relationship="Self.FK_ARTICULOS_MARCAS" FromRole="ARTICULOS" ToRole="MARCAS" />
+          <NavigationProperty Name="PROVEEDORES" Relationship="Self.FK_ARTICULOS_PROVEEDORES" FromRole="ARTICULOS" ToRole="PROVEEDORES" />
+          <NavigationProperty Name="Facturacion_Articulos" Relationship="Self.FK_Facturacion_Articulos_ARTICULOS" FromRole="ARTICULOS" ToRole="Facturacion_Articulos" />
+        </EntityType>
+        <EntityType Name="CAFETERIAS">
+          <Key>
+            <PropertyRef Name="Id_Cafeteria" />
+          </Key>
+          <Property Name="Id_Cafeteria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripción" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Campus" Type="Int32" Nullable="false" />
+          <Property Name="Encargado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CAMPUS" Relationship="Self.FK_CAFETERIAS_CAMPUS" FromRole="CAFETERIAS" ToRole="CAMPUS" />
+        </EntityType>
+        <EntityType Name="CAMPUS">
+          <Key>
+            <PropertyRef Name="Id_Campus" />
+          </Key>
+          <Property Name="Id_Campus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CAFETERIAS" Relationship="Self.FK_CAFETERIAS_CAMPUS" FromRole="CAMPUS" ToRole="CAFETERIAS" />
+        </EntityType>
+        <EntityType Name="EMPLEADOS">
+          <Key>
+            <PropertyRef Name="Id_Empleado" />
+          </Key>
+          <Property Name="Id_Empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tanda_Labor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Porciento_Comision" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Fecha_Ingreso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Facturacion_Articulos" Relationship="Self.FK_Facturacion_Articulos_EMPLEADOS" FromRole="EMPLEADOS" ToRole="Facturacion_Articulos" />
+        </EntityType>
+        <EntityType Name="Facturacion_Articulos">
+          <Key>
+            <PropertyRef Name="No_Factura" />
+          </Key>
+          <Property Name="No_Factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Empleado" Type="Int32" Nullable="false" />
+          <Property Name="Id_Articulo" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Venta" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Monto_Articulo" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Unidades_Vendidas" Type="Int32" Nullable="false" />
+          <Property Name="Comentario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Id_User" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ARTICULOS" Relationship="Self.FK_Facturacion_Articulos_ARTICULOS" FromRole="Facturacion_Articulos" ToRole="ARTICULOS" />
+          <NavigationProperty Name="EMPLEADOS" Relationship="Self.FK_Facturacion_Articulos_EMPLEADOS" FromRole="Facturacion_Articulos" ToRole="EMPLEADOS" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.FK_Facturacion_Articulos_USUARIOS" FromRole="Facturacion_Articulos" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="MARCAS">
+          <Key>
+            <PropertyRef Name="Id_Marca" />
+          </Key>
+          <Property Name="Id_Marca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ARTICULOS" Relationship="Self.FK_ARTICULOS_MARCAS" FromRole="MARCAS" ToRole="ARTICULOS" />
+          <Property Name="Descripcion_Marca" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PROVEEDORES">
+          <Key>
+            <PropertyRef Name="Id_Proveedor" />
+          </Key>
+          <Property Name="Id_Proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Comercial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RNC" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_Registro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ARTICULOS" Relationship="Self.FK_ARTICULOS_PROVEEDORES" FromRole="PROVEEDORES" ToRole="ARTICULOS" />
+        </EntityType>
+        <EntityType Name="Tipo_usuarios">
+          <Key>
+            <PropertyRef Name="Id_TipoUser" />
+          </Key>
+          <Property Name="Id_TipoUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.FK_USUARIOS_Tipo_usuarios" FromRole="Tipo_usuarios" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="Id_User" />
+          </Key>
+          <Property Name="Id_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_TipoUser" Type="Int32" Nullable="false" />
+          <Property Name="Limite_credito" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Fecha_Registro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Facturacion_Articulos" Relationship="Self.FK_Facturacion_Articulos_USUARIOS" FromRole="USUARIOS" ToRole="Facturacion_Articulos" />
+          <NavigationProperty Name="Tipo_usuarios" Relationship="Self.FK_USUARIOS_Tipo_usuarios" FromRole="USUARIOS" ToRole="Tipo_usuarios" />
+          <Property Name="Nombre_Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_ARTICULOS_MARCAS">
+          <End Role="MARCAS" Type="Self.MARCAS" Multiplicity="1" />
+          <End Role="ARTICULOS" Type="Self.ARTICULOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARCAS">
+              <PropertyRef Name="Id_Marca" />
+            </Principal>
+            <Dependent Role="ARTICULOS">
+              <PropertyRef Name="Id_Marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTICULOS_PROVEEDORES">
+          <End Role="PROVEEDORES" Type="Self.PROVEEDORES" Multiplicity="1" />
+          <End Role="ARTICULOS" Type="Self.ARTICULOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDORES">
+              <PropertyRef Name="Id_Proveedor" />
+            </Principal>
+            <Dependent Role="ARTICULOS">
+              <PropertyRef Name="Id_Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturacion_Articulos_ARTICULOS">
+          <End Role="ARTICULOS" Type="Self.ARTICULOS" Multiplicity="1" />
+          <End Role="Facturacion_Articulos" Type="Self.Facturacion_Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTICULOS">
+              <PropertyRef Name="Id_Articulo" />
+            </Principal>
+            <Dependent Role="Facturacion_Articulos">
+              <PropertyRef Name="Id_Articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAFETERIAS_CAMPUS">
+          <End Role="CAMPUS" Type="Self.CAMPUS" Multiplicity="1" />
+          <End Role="CAFETERIAS" Type="Self.CAFETERIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMPUS">
+              <PropertyRef Name="Id_Campus" />
+            </Principal>
+            <Dependent Role="CAFETERIAS">
+              <PropertyRef Name="Id_Campus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturacion_Articulos_EMPLEADOS">
+          <End Role="EMPLEADOS" Type="Self.EMPLEADOS" Multiplicity="1" />
+          <End Role="Facturacion_Articulos" Type="Self.Facturacion_Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADOS">
+              <PropertyRef Name="Id_Empleado" />
+            </Principal>
+            <Dependent Role="Facturacion_Articulos">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturacion_Articulos_USUARIOS">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="Facturacion_Articulos" Type="Self.Facturacion_Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="Id_User" />
+            </Principal>
+            <Dependent Role="Facturacion_Articulos">
+              <PropertyRef Name="Id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOS_Tipo_usuarios">
+          <End Role="Tipo_usuarios" Type="Self.Tipo_usuarios" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_usuarios">
+              <PropertyRef Name="Id_TipoUser" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="Id_TipoUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CAFETERIAEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ARTICULOS" EntityType="Self.ARTICULOS" />
+          <EntitySet Name="CAFETERIAS" EntityType="Self.CAFETERIAS" />
+          <EntitySet Name="CAMPUS" EntityType="Self.CAMPUS" />
+          <EntitySet Name="EMPLEADOS" EntityType="Self.EMPLEADOS" />
+          <EntitySet Name="Facturacion_Articulos" EntityType="Self.Facturacion_Articulos" />
+          <EntitySet Name="MARCAS" EntityType="Self.MARCAS" />
+          <EntitySet Name="PROVEEDORES" EntityType="Self.PROVEEDORES" />
+          <EntitySet Name="Tipo_usuarios" EntityType="Self.Tipo_usuarios" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+          <AssociationSet Name="FK_ARTICULOS_MARCAS" Association="Self.FK_ARTICULOS_MARCAS">
+            <End Role="MARCAS" EntitySet="MARCAS" />
+            <End Role="ARTICULOS" EntitySet="ARTICULOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTICULOS_PROVEEDORES" Association="Self.FK_ARTICULOS_PROVEEDORES">
+            <End Role="PROVEEDORES" EntitySet="PROVEEDORES" />
+            <End Role="ARTICULOS" EntitySet="ARTICULOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturacion_Articulos_ARTICULOS" Association="Self.FK_Facturacion_Articulos_ARTICULOS">
+            <End Role="ARTICULOS" EntitySet="ARTICULOS" />
+            <End Role="Facturacion_Articulos" EntitySet="Facturacion_Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAFETERIAS_CAMPUS" Association="Self.FK_CAFETERIAS_CAMPUS">
+            <End Role="CAMPUS" EntitySet="CAMPUS" />
+            <End Role="CAFETERIAS" EntitySet="CAFETERIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturacion_Articulos_EMPLEADOS" Association="Self.FK_Facturacion_Articulos_EMPLEADOS">
+            <End Role="EMPLEADOS" EntitySet="EMPLEADOS" />
+            <End Role="Facturacion_Articulos" EntitySet="Facturacion_Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturacion_Articulos_USUARIOS" Association="Self.FK_Facturacion_Articulos_USUARIOS">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="Facturacion_Articulos" EntitySet="Facturacion_Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOS_Tipo_usuarios" Association="Self.FK_USUARIOS_Tipo_usuarios">
+            <End Role="Tipo_usuarios" EntitySet="Tipo_usuarios" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CAFETERIAModelStoreContainer" CdmEntityContainer="CAFETERIAEntities1">
+          <EntitySetMapping Name="ARTICULOS">
+            <EntityTypeMapping TypeName="CAFETERIAModel.ARTICULOS">
+              <MappingFragment StoreEntitySet="ARTICULOS">
+                <ScalarProperty Name="Id_Articulo" ColumnName="Id_Articulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id_Marca" ColumnName="Id_Marca" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Id_Proveedor" ColumnName="Id_Proveedor" />
+                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAFETERIAS">
+            <EntityTypeMapping TypeName="CAFETERIAModel.CAFETERIAS">
+              <MappingFragment StoreEntitySet="CAFETERIAS">
+                <ScalarProperty Name="Id_Cafeteria" ColumnName="Id_Cafeteria" />
+                <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+                <ScalarProperty Name="Id_Campus" ColumnName="Id_Campus" />
+                <ScalarProperty Name="Encargado" ColumnName="Encargado" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAMPUS">
+            <EntityTypeMapping TypeName="CAFETERIAModel.CAMPUS">
+              <MappingFragment StoreEntitySet="CAMPUS">
+                <ScalarProperty Name="Id_Campus" ColumnName="Id_Campus" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLEADOS">
+            <EntityTypeMapping TypeName="CAFETERIAModel.EMPLEADOS">
+              <MappingFragment StoreEntitySet="EMPLEADOS">
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Tanda_Labor" ColumnName="Tanda_Labor" />
+                <ScalarProperty Name="Porciento_Comision" ColumnName="Porciento_Comision" />
+                <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha_Ingreso" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturacion_Articulos">
+            <EntityTypeMapping TypeName="CAFETERIAModel.Facturacion_Articulos">
+              <MappingFragment StoreEntitySet="Facturacion_Articulos">
+                <ScalarProperty Name="No_Factura" ColumnName="No_Factura" />
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Id_Articulo" ColumnName="Id_Articulo" />
+                <ScalarProperty Name="Fecha_Venta" ColumnName="Fecha_Venta" />
+                <ScalarProperty Name="Monto_Articulo" ColumnName="Monto_Articulo" />
+                <ScalarProperty Name="Unidades_Vendidas" ColumnName="Unidades_Vendidas" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Id_User" ColumnName="Id_User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MARCAS">
+            <EntityTypeMapping TypeName="CAFETERIAModel.MARCAS">
+              <MappingFragment StoreEntitySet="MARCAS">
+                <ScalarProperty Name="Descripcion_Marca" ColumnName="Descripcion_Marca" />
+                <ScalarProperty Name="Id_Marca" ColumnName="Id_Marca" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVEEDORES">
+            <EntityTypeMapping TypeName="CAFETERIAModel.PROVEEDORES">
+              <MappingFragment StoreEntitySet="PROVEEDORES">
+                <ScalarProperty Name="Id_Proveedor" ColumnName="Id_Proveedor" />
+                <ScalarProperty Name="Nombre_Comercial" ColumnName="Nombre_Comercial" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_usuarios">
+            <EntityTypeMapping TypeName="CAFETERIAModel.Tipo_usuarios">
+              <MappingFragment StoreEntitySet="Tipo_usuarios">
+                <ScalarProperty Name="Id_TipoUser" ColumnName="Id_TipoUser" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOS">
+            <EntityTypeMapping TypeName="CAFETERIAModel.USUARIOS">
+              <MappingFragment StoreEntitySet="USUARIOS">
+                <ScalarProperty Name="Nombre_Usuario" ColumnName="Nombre_Usuario" />
+                <ScalarProperty Name="Id_User" ColumnName="Id_User" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Id_TipoUser" ColumnName="Id_TipoUser" />
+                <ScalarProperty Name="Limite_credito" ColumnName="Limite_credito" />
+                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

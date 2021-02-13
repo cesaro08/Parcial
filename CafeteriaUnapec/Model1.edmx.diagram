@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1c7540e79f5840e4a6bc1ae0170bf4ed" Name="Diagram1">
+        <EntityTypeShape EntityType="CAFETERIAModel.ARTICULOS" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAFETERIAModel.CAFETERIAS" Width="1.5" PointX="8" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAFETERIAModel.CAMPUS" Width="1.5" PointX="5.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAFETERIAModel.EMPLEADOS" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAFETERIAModel.Facturacion_Articulos" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAFETERIAModel.MARCAS" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAFETERIAModel.PROVEEDORES" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAFETERIAModel.Tipo_usuarios" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAFETERIAModel.USUARIOS" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <AssociationConnector Association="CAFETERIAModel.FK_ARTICULOS_MARCAS" ManuallyRouted="false" />
+        <AssociationConnector Association="CAFETERIAModel.FK_ARTICULOS_PROVEEDORES" ManuallyRouted="false" />
+        <AssociationConnector Association="CAFETERIAModel.FK_Facturacion_Articulos_ARTICULOS" ManuallyRouted="false" />
+        <AssociationConnector Association="CAFETERIAModel.FK_CAFETERIAS_CAMPUS" ManuallyRouted="false" />
+        <AssociationConnector Association="CAFETERIAModel.FK_Facturacion_Articulos_EMPLEADOS" ManuallyRouted="false" />
+        <AssociationConnector Association="CAFETERIAModel.FK_Facturacion_Articulos_USUARIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="CAFETERIAModel.FK_USUARIOS_Tipo_usuarios" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
