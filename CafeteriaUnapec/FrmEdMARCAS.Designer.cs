@@ -141,7 +141,7 @@
             this.Controls.Add(this.BtnGuardar);
             this.Controls.Add(this.panel1);
             this.Name = "FrmEdMARCAS";
-            this.Text = "FrmEdMARCAS";
+            this.Text = "Edcion de Marcas";
             this.Load += new System.EventHandler(this.FrmEdMARCAS_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BtnEliminar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnGuardar)).EndInit();

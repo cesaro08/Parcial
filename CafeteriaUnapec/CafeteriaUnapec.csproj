@@ -100,6 +100,12 @@
     <Compile Include="FrmEdEmpleados.Designer.cs">
       <DependentUpon>FrmEdEmpleados.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEdFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdFactura.Designer.cs">
+      <DependentUpon>FrmEdFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEdMARCAS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,12 @@
     <Compile Include="FrmFactura.Designer.cs">
       <DependentUpon>FrmFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMARCAS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +177,12 @@
     </Compile>
     <Compile Include="FrmProveedores.Designer.cs">
       <DependentUpon>FrmProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRoles.Designer.cs">
+      <DependentUpon>frmRoles.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmTipoUsuario.cs">
       <SubType>Form</SubType>
@@ -201,6 +219,13 @@
     <Compile Include="PROVEEDORES.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ROLES.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sesion.cs" />
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tipo_usuarios.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -222,6 +247,9 @@
     <EmbeddedResource Include="FrmEdEmpleados.resx">
       <DependentUpon>FrmEdEmpleados.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdFactura.resx">
+      <DependentUpon>FrmEdFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEdMARCAS.resx">
       <DependentUpon>FrmEdMARCAS.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,6 +268,9 @@
     <EmbeddedResource Include="FrmFactura.resx">
       <DependentUpon>FrmFactura.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMARCAS.resx">
       <DependentUpon>FrmMARCAS.cs</DependentUpon>
     </EmbeddedResource>
@@ -254,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProveedores.resx">
       <DependentUpon>FrmProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRoles.resx">
+      <DependentUpon>frmRoles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTipoUsuario.resx">
       <DependentUpon>FrmTipoUsuario.cs</DependentUpon>

@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTipoUsuario));
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,21 +40,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tipousuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cAFETERIASBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.frmEdTipoUsuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.idTipoUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.activoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVTUsuarios)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tipousuariosBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cAFETERIASBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.frmEdTipoUsuarioBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -91,31 +81,25 @@
             // 
             // DGVTUsuarios
             // 
-            this.DGVTUsuarios.AutoGenerateColumns = false;
             this.DGVTUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVTUsuarios.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVTUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVTUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DGVTUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVTUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idTipoUserDataGridViewTextBoxColumn,
-            this.descripcionDataGridViewTextBoxColumn,
-            this.activoDataGridViewCheckBoxColumn});
-            this.DGVTUsuarios.DataSource = this.tipousuariosBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGVTUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGVTUsuarios.DefaultCellStyle = dataGridViewCellStyle4;
             this.DGVTUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGVTUsuarios.EnableHeadersVisualStyles = false;
             this.DGVTUsuarios.Location = new System.Drawing.Point(0, 0);
@@ -177,36 +161,6 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // tipousuariosBindingSource
-            // 
-            this.tipousuariosBindingSource.DataSource = typeof(CafeteriaUnapec.Tipo_usuarios);
-            // 
-            // cAFETERIASBindingSource
-            // 
-            this.cAFETERIASBindingSource.DataSource = typeof(CafeteriaUnapec.CAFETERIAS);
-            // 
-            // frmEdTipoUsuarioBindingSource
-            // 
-            this.frmEdTipoUsuarioBindingSource.DataSource = typeof(CafeteriaUnapec.FrmEdTipoUsuario);
-            // 
-            // idTipoUserDataGridViewTextBoxColumn
-            // 
-            this.idTipoUserDataGridViewTextBoxColumn.DataPropertyName = "Id_TipoUser";
-            this.idTipoUserDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.idTipoUserDataGridViewTextBoxColumn.Name = "idTipoUserDataGridViewTextBoxColumn";
-            // 
-            // descripcionDataGridViewTextBoxColumn
-            // 
-            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            // 
-            // activoDataGridViewCheckBoxColumn
-            // 
-            this.activoDataGridViewCheckBoxColumn.DataPropertyName = "Activo";
-            this.activoDataGridViewCheckBoxColumn.HeaderText = "Estado";
-            this.activoDataGridViewCheckBoxColumn.Name = "activoDataGridViewCheckBoxColumn";
-            // 
             // FrmTipoUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,6 +172,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmTipoUsuario";
             this.Text = "FrmTipoUsuario";
+            this.Activated += new System.EventHandler(this.FrmTipoUsuario_Activated);
             this.Load += new System.EventHandler(this.FrmTipoUsuario_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -227,9 +182,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tipousuariosBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cAFETERIASBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.frmEdTipoUsuarioBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -245,11 +197,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.BindingSource tipousuariosBindingSource;
-        private System.Windows.Forms.BindingSource cAFETERIASBindingSource;
-        private System.Windows.Forms.BindingSource frmEdTipoUsuarioBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idTipoUserDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn activoDataGridViewCheckBoxColumn;
     }
 }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEdCafe));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbEmpleado = new System.Windows.Forms.ComboBox();
             this.CheckActCafe = new System.Windows.Forms.CheckBox();
             this.TxtDesCafe = new System.Windows.Forms.TextBox();
             this.TxtIDcaf = new System.Windows.Forms.TextBox();
@@ -41,7 +42,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.GuardarCafe = new System.Windows.Forms.PictureBox();
             this.EliminarCafe = new System.Windows.Forms.PictureBox();
-            this.cbEmpleado = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GuardarCafe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EliminarCafe)).BeginInit();
@@ -64,6 +64,15 @@
             this.panel1.Size = new System.Drawing.Size(466, 222);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // cbEmpleado
+            // 
+            this.cbEmpleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEmpleado.FormattingEnabled = true;
+            this.cbEmpleado.Location = new System.Drawing.Point(98, 125);
+            this.cbEmpleado.Name = "cbEmpleado";
+            this.cbEmpleado.Size = new System.Drawing.Size(310, 21);
+            this.cbEmpleado.TabIndex = 10;
             // 
             // CheckActCafe
             // 
@@ -92,6 +101,7 @@
             // 
             // CBCampus
             // 
+            this.CBCampus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBCampus.FormattingEnabled = true;
             this.CBCampus.Location = new System.Drawing.Point(98, 52);
             this.CBCampus.Name = "CBCampus";
@@ -166,14 +176,6 @@
             this.EliminarCafe.TabStop = false;
             this.EliminarCafe.Click += new System.EventHandler(this.EliminarCafe_Click);
             // 
-            // cbEmpleado
-            // 
-            this.cbEmpleado.FormattingEnabled = true;
-            this.cbEmpleado.Location = new System.Drawing.Point(98, 125);
-            this.cbEmpleado.Name = "cbEmpleado";
-            this.cbEmpleado.Size = new System.Drawing.Size(310, 21);
-            this.cbEmpleado.TabIndex = 10;
-            // 
             // FrmEdCafe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,7 +185,7 @@
             this.Controls.Add(this.GuardarCafe);
             this.Controls.Add(this.panel1);
             this.Name = "FrmEdCafe";
-            this.Text = "Edición ";
+            this.Text = "Edición Cafeteria";
             this.Load += new System.EventHandler(this.FrmEdCafe_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

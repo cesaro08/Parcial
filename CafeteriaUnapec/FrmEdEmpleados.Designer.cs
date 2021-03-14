@@ -32,11 +32,11 @@
             this.EliminarUsuario = new System.Windows.Forms.PictureBox();
             this.GuardarUsuario = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtFecha = new System.Windows.Forms.DateTimePicker();
             this.CheckActivo = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtComision = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtFecha = new System.Windows.Forms.TextBox();
             this.txtCedulaUsuario = new System.Windows.Forms.TextBox();
             this.txtNombreUsuario = new System.Windows.Forms.TextBox();
             this.txtIDUsuario = new System.Windows.Forms.TextBox();
@@ -75,11 +75,11 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtFecha);
             this.panel1.Controls.Add(this.CheckActivo);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.txtComision);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.txtFecha);
             this.panel1.Controls.Add(this.txtCedulaUsuario);
             this.panel1.Controls.Add(this.txtNombreUsuario);
             this.panel1.Controls.Add(this.txtIDUsuario);
@@ -93,6 +93,13 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(466, 262);
             this.panel1.TabIndex = 7;
+            // 
+            // txtFecha
+            // 
+            this.txtFecha.Location = new System.Drawing.Point(145, 201);
+            this.txtFecha.Name = "txtFecha";
+            this.txtFecha.Size = new System.Drawing.Size(200, 20);
+            this.txtFecha.TabIndex = 14;
             // 
             // CheckActivo
             // 
@@ -128,14 +135,6 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Porciento de comision";
             // 
-            // txtFecha
-            // 
-            this.txtFecha.Location = new System.Drawing.Point(145, 203);
-            this.txtFecha.Name = "txtFecha";
-            this.txtFecha.ReadOnly = true;
-            this.txtFecha.Size = new System.Drawing.Size(310, 20);
-            this.txtFecha.TabIndex = 9;
-            // 
             // txtCedulaUsuario
             // 
             this.txtCedulaUsuario.Location = new System.Drawing.Point(145, 92);
@@ -161,6 +160,7 @@
             // 
             // CBTandas
             // 
+            this.CBTandas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBTandas.FormattingEnabled = true;
             this.CBTandas.Items.AddRange(new object[] {
             "Matutino",
@@ -226,7 +226,7 @@
             this.Controls.Add(this.GuardarUsuario);
             this.Controls.Add(this.panel1);
             this.Name = "FrmEdEmpleados";
-            this.Text = "FrmEdEmpleados";
+            this.Text = "Edicion de Empleados";
             this.Load += new System.EventHandler(this.FrmEdEmpleados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.EliminarUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GuardarUsuario)).EndInit();
@@ -245,7 +245,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtComision;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtFecha;
         private System.Windows.Forms.TextBox txtCedulaUsuario;
         private System.Windows.Forms.TextBox txtNombreUsuario;
         private System.Windows.Forms.TextBox txtIDUsuario;
@@ -255,5 +254,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker txtFecha;
     }
 }

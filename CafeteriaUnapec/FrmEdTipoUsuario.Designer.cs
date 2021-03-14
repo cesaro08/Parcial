@@ -139,7 +139,7 @@
             this.Controls.Add(this.GuardarCafe);
             this.Controls.Add(this.panel1);
             this.Name = "FrmEdTipoUsuario";
-            this.Text = "FrmEdTipoUsuario";
+            this.Text = "Edicion Tipo de Usuario";
             this.Load += new System.EventHandler(this.FrmEdTipoUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.EliminarCafe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GuardarCafe)).EndInit();

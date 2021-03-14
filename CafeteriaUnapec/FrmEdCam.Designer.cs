@@ -141,7 +141,8 @@
             this.Controls.Add(this.PictureBox1);
             this.Controls.Add(this.panel1);
             this.Name = "FrmEdCam";
-            this.Text = "FrmEdCaf";
+            this.Text = "Edicion Campus";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmEdCam_FormClosed);
             this.Load += new System.EventHandler(this.FrmEdCam_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

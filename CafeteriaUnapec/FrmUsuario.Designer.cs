@@ -58,7 +58,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(650, 38);
+            this.panel3.Size = new System.Drawing.Size(674, 38);
             this.panel3.TabIndex = 7;
             // 
             // label2
@@ -79,7 +79,7 @@
             this.panel2.Controls.Add(this.DGVUsuarios);
             this.panel2.Location = new System.Drawing.Point(12, 119);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(622, 385);
+            this.panel2.Size = new System.Drawing.Size(650, 385);
             this.panel2.TabIndex = 6;
             // 
             // DGVUsuarios
@@ -107,7 +107,7 @@
             this.DGVUsuarios.EnableHeadersVisualStyles = false;
             this.DGVUsuarios.Location = new System.Drawing.Point(0, 0);
             this.DGVUsuarios.Name = "DGVUsuarios";
-            this.DGVUsuarios.Size = new System.Drawing.Size(620, 383);
+            this.DGVUsuarios.Size = new System.Drawing.Size(648, 383);
             this.DGVUsuarios.TabIndex = 0;
             this.DGVUsuarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVUsuarios_CellDoubleClick);
             // 
@@ -120,14 +120,14 @@
             this.panel1.Controls.Add(this.Agregar);
             this.panel1.Location = new System.Drawing.Point(12, 44);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(622, 69);
+            this.panel1.Size = new System.Drawing.Size(649, 69);
             this.panel1.TabIndex = 5;
             // 
             // txtBuscar
             // 
             this.txtBuscar.Location = new System.Drawing.Point(94, 25);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(386, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(430, 20);
             this.txtBuscar.TabIndex = 3;
             // 
             // label1
@@ -144,7 +144,7 @@
             // 
             this.Buscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Buscar.Image = ((System.Drawing.Image)(resources.GetObject("Buscar.Image")));
-            this.Buscar.Location = new System.Drawing.Point(502, 9);
+            this.Buscar.Location = new System.Drawing.Point(530, 3);
             this.Buscar.Name = "Buscar";
             this.Buscar.Size = new System.Drawing.Size(50, 50);
             this.Buscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -156,7 +156,7 @@
             // 
             this.Agregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Agregar.Image = ((System.Drawing.Image)(resources.GetObject("Agregar.Image")));
-            this.Agregar.Location = new System.Drawing.Point(561, 9);
+            this.Agregar.Location = new System.Drawing.Point(589, 3);
             this.Agregar.Name = "Agregar";
             this.Agregar.Size = new System.Drawing.Size(56, 50);
             this.Agregar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -172,7 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(650, 486);
+            this.ClientSize = new System.Drawing.Size(674, 486);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

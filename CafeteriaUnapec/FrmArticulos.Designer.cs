@@ -171,6 +171,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmArticulos";
             this.Text = "FrmArticulos";
+            this.Activated += new System.EventHandler(this.FrmArticulos_Activated);
             this.Load += new System.EventHandler(this.FrmArticulos_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

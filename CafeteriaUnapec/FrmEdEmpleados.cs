@@ -23,34 +23,65 @@ namespace CafeteriaUnapec
         {
 
         }
+        public static bool validaCedula(string pCedula)
+        {
+            int vnTotal = 0;
+            string vcCedula = pCedula.Replace("-", "");
+            int pLongCed = vcCedula.Trim().Length;
+            int[] digitoMult = new int[11] { 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1 };
 
+            if (pLongCed < 11 || pLongCed > 11)
+                return false;
+
+            for (int vDig = 1; vDig <= pLongCed; vDig++)
+            {
+                int vCalculo = Int32.Parse(vcCedula.Substring(vDig - 1, 1)) * digitoMult[vDig - 1];
+                if (vCalculo < 10)
+                    vnTotal += vCalculo;
+                else
+                    vnTotal += Int32.Parse(vCalculo.ToString().Substring(0, 1)) + Int32.Parse(vCalculo.ToString().Substring(1, 1));
+            }
+
+            if (vnTotal % 10 == 0)
+                return true;
+            else
+                return false;
+        }
         private void GuardarUsuario_Click(object sender, EventArgs e)
         {
-            EMPLEADOS em = entities.EMPLEADOS.Find(Int32.Parse(txtIDUsuario.Text));
-            if(em != null)
+            if (!validaCedula(txtCedulaUsuario.Text))
             {
-                em.Nombre = txtNombreUsuario.Text;
-                em.Cedula = txtCedulaUsuario.Text;
-                em.Tanda_Labor = CBTandas.Text;
-                em.Porciento_Comision = decimal.Parse(txtComision.Text);
-                em.Activo = CheckActivo.Checked;
-
+                MessageBox.Show("Credenciales erroneas");
             }
             else
             {
-                entities.EMPLEADOS.Add(new EMPLEADOS
+                EMPLEADOS em = entities.EMPLEADOS.Find(Int32.Parse(txtIDUsuario.Text));
+                if (em != null)
                 {
-                    Nombre = txtNombreUsuario.Text,
-                    Cedula = txtCedulaUsuario.Text,
-                    Tanda_Labor = CBTandas.Text,
-                    Porciento_Comision = decimal.Parse(txtComision.Text),
-                    Fecha_Ingreso = DateTime.Parse(txtFecha.Text),
-                    Activo = CheckActivo.Checked
-                }) ;
+                    em.Nombre = txtNombreUsuario.Text;
+                    em.Cedula = txtCedulaUsuario.Text;
+                    em.Tanda_Labor = CBTandas.Text;
+                    em.Porciento_Comision = decimal.Parse(txtComision.Text);
+                    em.Activo = CheckActivo.Checked;
+                    em.Fecha_Ingreso = txtFecha.Value;
+
+                }
+                else
+                {
+                    entities.EMPLEADOS.Add(new EMPLEADOS
+                    {
+                        Nombre = txtNombreUsuario.Text,
+                        Cedula = txtCedulaUsuario.Text,
+                        Tanda_Labor = CBTandas.Text,
+                        Porciento_Comision = decimal.Parse(txtComision.Text),
+                        Fecha_Ingreso = txtFecha.Value,
+                        Activo = CheckActivo.Checked
+                    });
+                }
+                entities.SaveChanges();
+                MessageBox.Show("Guardado con exito");
+                this.Close();
             }
-            entities.SaveChanges();
-            MessageBox.Show("Guardado con exito");
-            this.Close();
         }
 
         private void FrmEdEmpleados_Load(object sender, EventArgs e)
@@ -64,7 +95,7 @@ namespace CafeteriaUnapec
                 txtComision.Text = em.Porciento_Comision.ToString();
                 txtFecha.Text = em.Fecha_Ingreso.ToString();
             }
-            else { txtFecha.Text = DateTime.Now.ToString(); }
+            
         }
 
         private void EliminarUsuario_Click(object sender, EventArgs e)
@@ -85,8 +116,9 @@ namespace CafeteriaUnapec
             else
             {
                 MessageBox.Show("Empleado no encontrada");
-                this.Close();
+                
             }
+            this.Close();
         }
     }
 }

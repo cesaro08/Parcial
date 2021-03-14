@@ -14,9 +14,18 @@ namespace CafeteriaUnapec
     {
         private CAFETERIAS Cafeteria { get; set; }
         private CAFETERIAEntities1 entities = new CAFETERIAEntities1();
+        public bool rol { get; set; }
         public FrmCAFETERIA()
         {
             InitializeComponent();
+            int tipo;
+            tipo = Sesion.idTipo;
+
+            if (tipo != 2)
+            {
+                BtnAñadir.Enabled = false;
+                DGVCaf.Enabled = false;
+            }
         }
 
         private void BtnBusqueda_Click(object sender, EventArgs e)
@@ -43,10 +52,28 @@ namespace CafeteriaUnapec
             
             DGVCaf.DataSource = query.ToList();
             DGVCaf.Columns[4].HeaderText = "Campus";
-                                }
+         }
+        private void consultar()
+        {
+            var query = from cafe in entities.CAFETERIAS
+                        join campus in entities.CAMPUS on cafe.Id_Campus equals campus.Id_Campus
+                        select new
+                        {
+                            cafe.Id_Cafeteria,
+                            cafe.Descripción,
+                            cafe.Encargado,
+                            cafe.Activo,
+                            campus.Descripcion
+                        };
 
 
-private void BtnAñadir_Click(object sender, EventArgs e)
+
+            DGVCaf.DataSource = query.ToList();
+            DGVCaf.Columns[4].HeaderText = "Campus";
+        }
+
+
+        private void BtnAñadir_Click(object sender, EventArgs e)
         {
             FrmEdCafe frm = new FrmEdCafe();
             frm.ShowDialog();
@@ -58,6 +85,9 @@ private void BtnAñadir_Click(object sender, EventArgs e)
         private void FrmCAFETERIA_Load(object sender, EventArgs e)
         {
             consultarCriterio();
+            DGVCaf.Columns[0].HeaderText = "ID";
+
+
         }
 
         private void DGVCaf_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -83,6 +113,11 @@ private void BtnAñadir_Click(object sender, EventArgs e)
             {
                 MessageBox.Show("Ha ocurrido un error: " + ex.Message);
             }
+        }
+
+        private void FrmCAFETERIA_Activated(object sender, EventArgs e)
+        {
+            consultar();
         }
     }
 }

@@ -32,6 +32,7 @@
             this.Eliminar = new System.Windows.Forms.PictureBox();
             this.Guardar = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbProveedor = new System.Windows.Forms.ComboBox();
             this.chkAct = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
@@ -45,7 +46,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbProveedor = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.Eliminar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Guardar)).BeginInit();
             this.panel1.SuspendLayout();
@@ -93,6 +93,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(466, 262);
             this.panel1.TabIndex = 7;
+            // 
+            // cbProveedor
+            // 
+            this.cbProveedor.DisplayMember = "Descripcion";
+            this.cbProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbProveedor.FormattingEnabled = true;
+            this.cbProveedor.Location = new System.Drawing.Point(124, 162);
+            this.cbProveedor.Name = "cbProveedor";
+            this.cbProveedor.Size = new System.Drawing.Size(310, 21);
+            this.cbProveedor.TabIndex = 14;
             // 
             // chkAct
             // 
@@ -154,6 +164,7 @@
             // cbMarca
             // 
             this.cbMarca.DisplayMember = "Descripcion";
+            this.cbMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMarca.FormattingEnabled = true;
             this.cbMarca.Location = new System.Drawing.Point(124, 92);
             this.cbMarca.Name = "cbMarca";
@@ -205,15 +216,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "ID";
             // 
-            // cbProveedor
-            // 
-            this.cbProveedor.DisplayMember = "Descripcion";
-            this.cbProveedor.FormattingEnabled = true;
-            this.cbProveedor.Location = new System.Drawing.Point(124, 162);
-            this.cbProveedor.Name = "cbProveedor";
-            this.cbProveedor.Size = new System.Drawing.Size(310, 21);
-            this.cbProveedor.TabIndex = 14;
-            // 
             // FrmEdArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,7 +225,8 @@
             this.Controls.Add(this.Guardar);
             this.Controls.Add(this.panel1);
             this.Name = "FrmEdArticulos";
-            this.Text = "FrmEdArticulos";
+            this.Text = "Edicion Articulos";
+            this.Deactivate += new System.EventHandler(this.FrmEdArticulos_Deactivate);
             this.Load += new System.EventHandler(this.FrmEdArticulos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Eliminar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Guardar)).EndInit();

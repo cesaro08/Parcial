@@ -23,6 +23,7 @@ namespace CafeteriaUnapec
         public int Id_TipoUser { get; set; }
         public string Descripcion { get; set; }
         public bool Activo { get; set; }
+        public Nullable<bool> Escritura { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USUARIOS> USUARIOS { get; set; }

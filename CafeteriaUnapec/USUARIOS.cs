@@ -27,6 +27,8 @@ namespace CafeteriaUnapec
         public System.DateTime Fecha_Registro { get; set; }
         public bool Activo { get; set; }
         public string Nombre_Usuario { get; set; }
+        public string Usuario { get; set; }
+        public string Contraseña { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Facturacion_Articulos> Facturacion_Articulos { get; set; }

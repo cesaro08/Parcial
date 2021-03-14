@@ -21,6 +21,8 @@
         <AssociationConnector Association="CAFETERIAModel.FK_Facturacion_Articulos_EMPLEADOS" ManuallyRouted="false" />
         <AssociationConnector Association="CAFETERIAModel.FK_Facturacion_Articulos_USUARIOS" ManuallyRouted="false" />
         <AssociationConnector Association="CAFETERIAModel.FK_USUARIOS_Tipo_usuarios" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CAFETERIAModel.ROLES" Width="1.5" PointX="0.75" PointY="13.25" />
+        <EntityTypeShape EntityType="CAFETERIAModel.sysdiagrams" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

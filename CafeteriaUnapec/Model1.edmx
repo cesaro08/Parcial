@@ -79,6 +79,23 @@
           <Property Name="Fecha_Registro" Type="date" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="ROLES">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rol" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Tipo_usuarios">
           <Key>
             <PropertyRef Name="Id_TipoUser" />
@@ -86,6 +103,7 @@
           <Property Name="Id_TipoUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Escritura" Type="bit" />
         </EntityType>
         <EntityType Name="USUARIOS">
           <Key>
@@ -98,6 +116,8 @@
           <Property Name="Limite_credito" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Fecha_Registro" Type="date" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contraseña" Type="nchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_ARTICULOS_MARCAS">
           <End Role="MARCAS" Type="Self.MARCAS" Multiplicity="1" />
@@ -191,6 +211,8 @@
           <EntitySet Name="Facturacion_Articulos" EntityType="Self.Facturacion_Articulos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MARCAS" EntityType="Self.MARCAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PROVEEDORES" EntityType="Self.PROVEEDORES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipo_usuarios" EntityType="Self.Tipo_usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ARTICULOS_MARCAS" Association="Self.FK_ARTICULOS_MARCAS">
@@ -319,6 +341,7 @@
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="USUARIOS" Relationship="Self.FK_USUARIOS_Tipo_usuarios" FromRole="Tipo_usuarios" ToRole="USUARIOS" />
+          <Property Name="Escritura" Type="Boolean" />
         </EntityType>
         <EntityType Name="USUARIOS">
           <Key>
@@ -333,6 +356,8 @@
           <NavigationProperty Name="Facturacion_Articulos" Relationship="Self.FK_Facturacion_Articulos_USUARIOS" FromRole="USUARIOS" ToRole="Facturacion_Articulos" />
           <NavigationProperty Name="Tipo_usuarios" Relationship="Self.FK_USUARIOS_Tipo_usuarios" FromRole="USUARIOS" ToRole="Tipo_usuarios" />
           <Property Name="Nombre_Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
         </EntityType>
         <Association Name="FK_ARTICULOS_MARCAS">
           <End Role="MARCAS" Type="Self.MARCAS" Multiplicity="1" />
@@ -456,7 +481,26 @@
             <End Role="Tipo_usuarios" EntitySet="Tipo_usuarios" />
             <End Role="USUARIOS" EntitySet="USUARIOS" />
           </AssociationSet>
+          <EntitySet Name="ROLES" EntityType="CAFETERIAModel.ROLES" />
+          <EntitySet Name="sysdiagrams" EntityType="CAFETERIAModel.sysdiagrams" />
         </EntityContainer>
+        <EntityType Name="ROLES">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rol" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -547,6 +591,7 @@
           <EntitySetMapping Name="Tipo_usuarios">
             <EntityTypeMapping TypeName="CAFETERIAModel.Tipo_usuarios">
               <MappingFragment StoreEntitySet="Tipo_usuarios">
+                <ScalarProperty Name="Escritura" ColumnName="Escritura" />
                 <ScalarProperty Name="Id_TipoUser" ColumnName="Id_TipoUser" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
@@ -556,6 +601,8 @@
           <EntitySetMapping Name="USUARIOS">
             <EntityTypeMapping TypeName="CAFETERIAModel.USUARIOS">
               <MappingFragment StoreEntitySet="USUARIOS">
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Nombre_Usuario" ColumnName="Nombre_Usuario" />
                 <ScalarProperty Name="Id_User" ColumnName="Id_User" />
                 <ScalarProperty Name="Cedula" ColumnName="Cedula" />
@@ -563,6 +610,25 @@
                 <ScalarProperty Name="Limite_credito" ColumnName="Limite_credito" />
                 <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLES">
+            <EntityTypeMapping TypeName="CAFETERIAModel.ROLES">
+              <MappingFragment StoreEntitySet="ROLES">
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CAFETERIAModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

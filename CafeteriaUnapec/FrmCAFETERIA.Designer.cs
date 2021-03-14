@@ -178,6 +178,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmCAFETERIA";
             this.Text = "FrmCAFETERIA";
+            this.Activated += new System.EventHandler(this.FrmCAFETERIA_Activated);
             this.Load += new System.EventHandler(this.FrmCAFETERIA_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

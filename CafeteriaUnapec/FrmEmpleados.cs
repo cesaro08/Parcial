@@ -17,6 +17,14 @@ namespace CafeteriaUnapec
         public FrmEmpleados()
         {
             InitializeComponent();
+            int tipo;
+            tipo = Sesion.idTipo;
+
+            if (tipo != 2)
+            {
+                BtnAgregar.Enabled = false;
+                DGVEmpleados.Enabled = false;
+            }
         }
 
         private void BtnBuCafe_Click(object sender, EventArgs e)
@@ -58,6 +66,11 @@ namespace CafeteriaUnapec
         private void FrmEmpleados_Load(object sender, EventArgs e)
         {
             consulta();
+            DGVEmpleados.Columns[0].HeaderText = "ID";
+            DGVEmpleados.Columns[3].HeaderText = "Tanda Laboral";
+            DGVEmpleados.Columns[4].HeaderText = "Porciento Comision";
+            DGVEmpleados.Columns[5].HeaderText = "Fecha de Ingreso";
+
         }
 
         private void DGVEmpleados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -81,6 +94,11 @@ namespace CafeteriaUnapec
         {
             FrmEdEmpleados frm = new FrmEdEmpleados();
             frm.ShowDialog();
+        }
+
+        private void FrmEmpleados_Activated(object sender, EventArgs e)
+        {
+            consulta();
         }
     }
 }

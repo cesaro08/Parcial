@@ -53,6 +53,8 @@ namespace CafeteriaUnapec
 
             entities.SaveChanges();
             MessageBox.Show("Datos guardados con éxito");
+
+            
             this.Close();
 
         }
@@ -78,6 +80,14 @@ namespace CafeteriaUnapec
                 this.Close();
             }
 
+        }
+
+        private void FrmEdCam_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+
+           
+            
         }
     }
 }

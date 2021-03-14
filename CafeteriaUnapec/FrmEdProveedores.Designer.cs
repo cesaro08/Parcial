@@ -32,16 +32,16 @@
             this.Eliminar = new System.Windows.Forms.PictureBox();
             this.Guardar = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dtFecha = new System.Windows.Forms.DateTimePicker();
+            this.txtRNC = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.ChkAct = new System.Windows.Forms.CheckBox();
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.TxtID = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtRNC = new System.Windows.Forms.TextBox();
-            this.txtFecha = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Eliminar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Guardar)).BeginInit();
             this.panel1.SuspendLayout();
@@ -71,7 +71,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.txtFecha);
+            this.panel1.Controls.Add(this.dtFecha);
             this.panel1.Controls.Add(this.txtRNC);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
@@ -86,6 +86,38 @@
             this.panel1.Size = new System.Drawing.Size(449, 189);
             this.panel1.TabIndex = 7;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // dtFecha
+            // 
+            this.dtFecha.Location = new System.Drawing.Point(130, 127);
+            this.dtFecha.Name = "dtFecha";
+            this.dtFecha.Size = new System.Drawing.Size(200, 20);
+            this.dtFecha.TabIndex = 13;
+            // 
+            // txtRNC
+            // 
+            this.txtRNC.Location = new System.Drawing.Point(130, 92);
+            this.txtRNC.Name = "txtRNC";
+            this.txtRNC.Size = new System.Drawing.Size(310, 20);
+            this.txtRNC.TabIndex = 12;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(28, 92);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(30, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "RNC";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(28, 127);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Fecha de Registro";
             // 
             // ChkAct
             // 
@@ -139,39 +171,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "ID";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 127);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Fecha de Registro";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 92);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "RNC";
-            // 
-            // txtRNC
-            // 
-            this.txtRNC.Location = new System.Drawing.Point(130, 92);
-            this.txtRNC.Name = "txtRNC";
-            this.txtRNC.Size = new System.Drawing.Size(310, 20);
-            this.txtRNC.TabIndex = 12;
-            // 
-            // txtFecha
-            // 
-            this.txtFecha.Location = new System.Drawing.Point(130, 124);
-            this.txtFecha.Name = "txtFecha";
-            this.txtFecha.ReadOnly = true;
-            this.txtFecha.Size = new System.Drawing.Size(310, 20);
-            this.txtFecha.TabIndex = 13;
-            // 
             // FrmEdProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -181,7 +180,7 @@
             this.Controls.Add(this.Guardar);
             this.Controls.Add(this.panel1);
             this.Name = "FrmEdProveedores";
-            this.Text = "FrmEdProveedores";
+            this.Text = "Edicion Proveedores";
             this.Load += new System.EventHandler(this.FrmEdProveedores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Eliminar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Guardar)).EndInit();
@@ -202,9 +201,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtFecha;
         private System.Windows.Forms.TextBox txtRNC;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dtFecha;
     }
 }

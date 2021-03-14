@@ -171,6 +171,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmProveedores";
             this.Text = "FrmProveedores";
+            this.Activated += new System.EventHandler(this.FrmProveedores_Activated);
             this.Load += new System.EventHandler(this.FrmProveedores_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVProveedores)).EndInit();

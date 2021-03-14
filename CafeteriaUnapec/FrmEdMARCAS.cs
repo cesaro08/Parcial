@@ -42,7 +42,8 @@ namespace CafeteriaUnapec
 
             entities.SaveChanges();
             MessageBox.Show("Datos guardados con éxito");
-            
+            FrmMARCAS frm = new FrmMARCAS();
+           
             this.Close();
             
         }

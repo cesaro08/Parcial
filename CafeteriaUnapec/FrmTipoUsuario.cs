@@ -17,6 +17,14 @@ namespace CafeteriaUnapec
         public FrmTipoUsuario()
         {
             InitializeComponent();
+            int tipo;
+            tipo = Sesion.idTipo;
+
+            if (tipo != 2)
+            {
+                pictureBox1.Enabled = false;
+                DGVTUsuarios.Enabled = false;
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -25,14 +33,15 @@ namespace CafeteriaUnapec
         }
         private void Consultar()
         {
-            DGVTUsuarios.DataSource = entities.Tipo_usuarios.ToList();
+            var TUsuarios = from TU in entities.Tipo_usuarios
+                            select new { TU.Id_TipoUser, TU.Descripcion, TU.Activo };
+            DGVTUsuarios.DataSource = TUsuarios.ToList();
         }
 
         private void FrmTipoUsuario_Load(object sender, EventArgs e)
         {
-            if (txtBuscar.Text == "") {
-                Consultar();
-            }
+            Consultar();
+            DGVTUsuarios.Columns[0].HeaderText = "ID";
         }
 
         private void ConsultarporCriterio()
@@ -42,7 +51,7 @@ namespace CafeteriaUnapec
                             TU.Descripcion.ToString().StartsWith(txtBuscar.Text) ||
                             TU.Activo.ToString().StartsWith(txtBuscar.Text)
                             )
-                            select TU;
+                            select new { TU.Id_TipoUser,TU.Descripcion,TU.Activo };
             DGVTUsuarios.DataSource = TUsuarios.ToList();
         }
 
@@ -71,6 +80,11 @@ namespace CafeteriaUnapec
             {
                 MessageBox.Show("Ha ocurrido un error" + ex);
             }
+        }
+
+        private void FrmTipoUsuario_Activated(object sender, EventArgs e)
+        {
+            Consultar();
         }
     }
 }

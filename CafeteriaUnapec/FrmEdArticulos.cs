@@ -22,42 +22,50 @@ namespace CafeteriaUnapec
         CAFETERIAEntities1 entities = new CAFETERIAEntities1();
         private void Guardar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ARTICULOS art = entities.ARTICULOS.Find(Int32.Parse(txtID.Text));
-                if (art != null)
+            
+                try
                 {
-                    art.Descripcion = txtDescripcion.Text;
-                    art.Id_Marca = Convert.ToInt32(cbMarca.SelectedValue);
-                    art.Costo = decimal.Parse(txtCosto.Text);
-                    art.Id_Proveedor = Convert.ToInt32(cbProveedor.SelectedValue);
-                    art.Existencia = Int32.Parse(txtCantidad.Text);
-                    art.Activo = chkAct.Checked;
-                }
-                else
+                    ARTICULOS art = entities.ARTICULOS.Find(Int32.Parse(txtID.Text));
+                if (Int32.Parse(txtCantidad.Text) >= 0 && decimal.Parse(txtCosto.Text) > 0)
                 {
-                    entities.ARTICULOS.Add(new ARTICULOS
+                    if (art != null)
                     {
-                        Descripcion = txtDescripcion.Text,
-                        Id_Marca = Convert.ToInt32(cbMarca.SelectedValue),
-                        Costo = decimal.Parse(txtCosto.Text),
-                        Id_Proveedor = Convert.ToInt32(cbProveedor.SelectedValue),
-                        Existencia = Int32.Parse(txtCantidad.Text),
-                        Activo = chkAct.Checked
-                    });
+                        art.Descripcion = txtDescripcion.Text;
+                        art.Id_Marca = Convert.ToInt32(cbMarca.SelectedValue);
+                        art.Costo = decimal.Parse(txtCosto.Text);
+                        art.Id_Proveedor = Convert.ToInt32(cbProveedor.SelectedValue);
+                        art.Existencia = Int32.Parse(txtCantidad.Text);
+                        art.Activo = chkAct.Checked;
+                    }
+                    else
+                    {
+                        entities.ARTICULOS.Add(new ARTICULOS
+                        {
+                            Descripcion = txtDescripcion.Text,
+                            Id_Marca = Convert.ToInt32(cbMarca.SelectedValue),
+                            Costo = decimal.Parse(txtCosto.Text),
+                            Id_Proveedor = Convert.ToInt32(cbProveedor.SelectedValue),
+                            Existencia = Int32.Parse(txtCantidad.Text),
+                            Activo = chkAct.Checked
+                        });
+                    }
+                    entities.SaveChanges();
+                    MessageBox.Show("Guardado exitoso");
+                    this.Close();
                 }
-                entities.SaveChanges();
-                MessageBox.Show("Guardado exitoso");
-                this.Close();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Erro" + ex);
-            }
+                else MessageBox.Show("No se aceptan valores negativos ");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error " + ex);
+                }
+            
+            
         }
 
         private void FrmEdArticulos_Load(object sender, EventArgs e)
         {
+            
             cargarDatos();
             if(art != null)
             {
@@ -76,7 +84,7 @@ namespace CafeteriaUnapec
             if (lista.Count > 0)
             {
                 cbMarca.DataSource = lista.ToList();
-                cbMarca.DisplayMember = "Descripcion";
+                cbMarca.DisplayMember = "Descripcion_Marca";
                 cbMarca.ValueMember = "Id_Marca";
 
             }
@@ -106,6 +114,12 @@ namespace CafeteriaUnapec
             else { MessageBox.Show("Articulo no existente"); }
             entities.SaveChanges();
             this.Close();
+            
+        }
+
+        private void FrmEdArticulos_Deactivate(object sender, EventArgs e)
+        {
+            
         }
     }
 }

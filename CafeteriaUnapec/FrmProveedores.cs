@@ -17,12 +17,27 @@ namespace CafeteriaUnapec
         public FrmProveedores()
         {
             InitializeComponent();
+            int tipo;
+            tipo = Sesion.idTipo;
+
+            if (tipo != 2)
+            {
+                BtnAgregar.Enabled = false;
+                DGVProveedores.Enabled = false;
+            }
         }
 
         private void FrmProveedores_Load(object sender, EventArgs e)
         {
+           
+
             consulta();
+            DGVProveedores.Columns[0].HeaderText = "ID";
+            DGVProveedores.Columns[1].HeaderText = "Nombre Comercial";
+            DGVProveedores.Columns[3].HeaderText = "Fecha de Registro";
+
         }
+
         private void consulta()
         {
             var consulta = from pro in entities.PROVEEDORES
@@ -69,6 +84,11 @@ namespace CafeteriaUnapec
             FrmEdProveedores fep = new FrmEdProveedores();
             fep.prov = pro;
             fep.ShowDialog();
+        }
+
+        private void FrmProveedores_Activated(object sender, EventArgs e)
+        {
+            consulta();
         }
     }
 }

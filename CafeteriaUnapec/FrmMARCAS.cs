@@ -17,6 +17,14 @@ namespace CafeteriaUnapec
         public FrmMARCAS()
         {
             InitializeComponent();
+            int tipo;
+            tipo = Sesion.idTipo;
+
+            if (tipo != 2)
+            {
+                BtnAñadir.Enabled = false;
+                DGVMarcas.Enabled = false;
+            }
         }
 
         private void BtnBusqueda_Click(object sender, EventArgs e)
@@ -74,7 +82,11 @@ namespace CafeteriaUnapec
 
         private void FrmMARCAS_Load(object sender, EventArgs e)
         {
+           
             consulta();
+            DGVMarcas.Columns[0].HeaderText = "ID";
+            DGVMarcas.Columns[1].HeaderText = "Descripcion";
+
         }
         private void consulta()
         {

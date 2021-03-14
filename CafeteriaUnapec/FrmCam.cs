@@ -18,6 +18,14 @@ namespace CafeteriaUnapec
         public FrmCam()
         {
             InitializeComponent();
+            int tipo;
+            tipo = Sesion.idTipo;
+
+            if (tipo != 2)
+            {
+                pictureBox1.Enabled = false;
+                DGVCampus.Enabled = false;
+            }
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
@@ -29,17 +37,19 @@ namespace CafeteriaUnapec
 
         private void consultarCampus()
         {
-            DGVCampus.DataSource = entities.CAMPUS.ToList();
+            var campus = from cam in entities.CAMPUS
+                         select new { cam.Id_Campus, cam.Descripcion, cam.Activo };
+            DGVCampus.DataSource = campus.ToList();
         }
 
         private void consultarCriterio()
         {
             var campus = from cam in entities.CAMPUS
-                         where (cam.Id_Campus.ToString().StartsWith(TxtBusquedaCam.Text) ||
+                         where (cam.Id_Campus.ToString().StartsWith(TxtBusquedaCam.Text)||
                          cam.Descripcion.ToString().StartsWith(TxtBusquedaCam.Text) ||
-                         cam.Activo.ToString().ToString().StartsWith(TxtBusquedaCam.Text)
+                         cam.Activo.ToString().StartsWith(TxtBusquedaCam.Text) 
                          )
-                         select cam;
+                         select new { cam.Id_Campus,cam.Descripcion,cam.Activo };
 
             DGVCampus.DataSource = campus.ToList();
 
@@ -56,11 +66,14 @@ namespace CafeteriaUnapec
         private void FrmCam_Load_1(object sender, EventArgs e)
         {
             consultarCampus();
+            DGVCampus.Columns[0].HeaderText = "ID";
+            
+
         }
 
         private void FrmCam_Activated(object sender, EventArgs e)
         {
-            consultarCriterio();
+            consultarCampus();
            
         }
 
@@ -99,6 +112,21 @@ namespace CafeteriaUnapec
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void DGVCampus_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            //consultarCampus();
+        }
+
+        private void DGVCampus_DataMemberChanged(object sender, EventArgs e)
+        {
+            //consultarCampus();
+        }
+
+        private void DGVCampus_DataSourceChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

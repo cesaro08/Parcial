@@ -12,6 +12,9 @@ namespace CafeteriaUnapec
 {
     public partial class FrmPrincipal : Form
     {
+        CAFETERIAEntities1 entities = new CAFETERIAEntities1();
+        public USUARIOS useractivo { get; set; }
+        public bool rol;
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -34,13 +37,18 @@ namespace CafeteriaUnapec
                 fh.Dock = DockStyle.Fill;
                 this.PnlSubF.Controls.Add(fh);
                 this.PnlSubF.Tag = fh;
+               
                 fh.Show();
 
         }
+        
 
         private void BtnCafeteria_Click(object sender, EventArgs e)
         {
             AbrirForm(new FrmCAFETERIA());
+            FrmCAFETERIA frm = new FrmCAFETERIA();
+            frm.rol = rol;
+            
         }
 
         private void BtnUni_Click(object sender, EventArgs e)
@@ -66,11 +74,15 @@ namespace CafeteriaUnapec
         private void BtnTipoUser_Click(object sender, EventArgs e)
         {
             AbrirForm(new FrmTipoUsuario());
+            
         }
 
         private void BtnUsuarios_Click(object sender, EventArgs e)
         {
+            
+
             AbrirForm(new FrmUsuario());
+
         }
 
         private void BtnEmpleados_Click(object sender, EventArgs e)
@@ -86,11 +98,34 @@ namespace CafeteriaUnapec
         private void BtnFact_Click(object sender, EventArgs e)
         {
             AbrirForm(new FrmFactura());
+            
         }
 
         private void PnlSubF_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        
+
+        private void FrmPrincipal_Activated(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btRol_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new frmRoles());
+        }
+
+        private void btCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmLogin frm = new frmLogin();
+            frm.Show();
         }
     }
 }

@@ -34,5 +34,7 @@ namespace CafeteriaUnapec
         public virtual DbSet<PROVEEDORES> PROVEEDORES { get; set; }
         public virtual DbSet<Tipo_usuarios> Tipo_usuarios { get; set; }
         public virtual DbSet<USUARIOS> USUARIOS { get; set; }
+        public virtual DbSet<ROLES> ROLES { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

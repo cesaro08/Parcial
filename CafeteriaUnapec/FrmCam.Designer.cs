@@ -41,9 +41,6 @@
             this.DGVCampus = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.idCampusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.activoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cAMPUSBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -120,7 +117,6 @@
             // 
             // DGVCampus
             // 
-            this.DGVCampus.AutoGenerateColumns = false;
             this.DGVCampus.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVCampus.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -132,11 +128,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DGVCampus.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DGVCampus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVCampus.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idCampusDataGridViewTextBoxColumn,
-            this.descripcionDataGridViewTextBoxColumn,
-            this.activoDataGridViewCheckBoxColumn});
-            this.DGVCampus.DataSource = this.cAMPUSBindingSource;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Gainsboro;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -150,7 +141,10 @@
             this.DGVCampus.Name = "DGVCampus";
             this.DGVCampus.Size = new System.Drawing.Size(614, 377);
             this.DGVCampus.TabIndex = 0;
+            this.DGVCampus.DataMemberChanged += new System.EventHandler(this.DGVCampus_DataMemberChanged);
+            this.DGVCampus.DataSourceChanged += new System.EventHandler(this.DGVCampus_DataSourceChanged);
             this.DGVCampus.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVCampus_CellDoubleClick);
+            this.DGVCampus.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DGVCampus_DataBindingComplete);
             // 
             // panel3
             // 
@@ -174,24 +168,6 @@
             this.label2.Size = new System.Drawing.Size(71, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "CAMPUS";
-            // 
-            // idCampusDataGridViewTextBoxColumn
-            // 
-            this.idCampusDataGridViewTextBoxColumn.DataPropertyName = "Id_Campus";
-            this.idCampusDataGridViewTextBoxColumn.HeaderText = "Id_Campus";
-            this.idCampusDataGridViewTextBoxColumn.Name = "idCampusDataGridViewTextBoxColumn";
-            // 
-            // descripcionDataGridViewTextBoxColumn
-            // 
-            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            // 
-            // activoDataGridViewCheckBoxColumn
-            // 
-            this.activoDataGridViewCheckBoxColumn.DataPropertyName = "Activo";
-            this.activoDataGridViewCheckBoxColumn.HeaderText = "Activo";
-            this.activoDataGridViewCheckBoxColumn.Name = "activoDataGridViewCheckBoxColumn";
             // 
             // cAMPUSBindingSource
             // 
@@ -234,9 +210,6 @@
         private System.Windows.Forms.DataGridView DGVCampus;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idCampusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn activoDataGridViewCheckBoxColumn;
         private System.Windows.Forms.BindingSource cAMPUSBindingSource;
     }
 }

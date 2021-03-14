@@ -17,6 +17,14 @@ namespace CafeteriaUnapec
         public FrmArticulos()
         {
             InitializeComponent();
+            int tipo;
+            tipo = Sesion.idTipo;
+            
+            if (tipo != 2)
+            {
+                BtnAgCafe.Enabled = false;
+                DGVArticulos.Enabled = false;
+            }
         }
 
         private void BtnBuCafe_Click(object sender, EventArgs e)
@@ -49,6 +57,7 @@ namespace CafeteriaUnapec
 
 
             DGVArticulos.Columns[4].HeaderText = "Proveedor";
+            DGVArticulos.Columns[0].HeaderText = "ID";
             DGVArticulos.DataSource = consulta.ToList();
            
 
@@ -73,7 +82,10 @@ namespace CafeteriaUnapec
 
         private void FrmArticulos_Load(object sender, EventArgs e)
         {
+           
+
             consulta();
+            
             DGVArticulos.Columns[2].HeaderText = "Marca";
             DGVArticulos.Columns[4].HeaderText = "Proveedor";
         }
@@ -101,6 +113,11 @@ namespace CafeteriaUnapec
             FrmEdArticulos fea = new FrmEdArticulos();
             fea.art = art;
             fea.ShowDialog();
+        }
+
+        private void FrmArticulos_Activated(object sender, EventArgs e)
+        {
+            consulta();
         }
     }
 }
